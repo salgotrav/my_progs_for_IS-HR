@@ -3,12 +3,12 @@
 #include<algorithm>
 #include<cmath>
 
-#define DEBUG_MODE
+//#define DEBUG_MODE
 
 using namespace std;
 
 class Edgelist {
-  public:
+	public:
 		vector<int> neighbour;
 		 double num_zombies;
 		 int num_neighbours;
@@ -22,8 +22,10 @@ int main()
   /***************input data*******************/
 	unsigned int num_test, num_nodes,num_roads, num_timesteps;
 	
+	cin>>num_test;
 	while(num_test--) {
-		cin>>num_test>>num_nodes>>num_roads>>num_timesteps;
+
+		cin>>num_nodes>>num_roads>>num_timesteps;
 		Edgelist *el = new Edgelist[num_nodes];
 		int node, neighbour;
 		for (int i=0; i<num_roads; i++) {
@@ -104,21 +106,24 @@ int main()
 		}//end of while num_timesteps
 
 		//store final number of zombies in a vector 
-		vector<int> zombies;
-		for (int i=0;i<num_nodes;i++) {
-			zombies.push_back( floor(el[i].num_zombies + 0.5) );
+		{ //local scope
+			vector<int> zombies;
+			for (int i=0;i<num_nodes;i++) {
+				zombies.push_back( floor(el[i].num_zombies + 0.5) );
 #ifdef DEBUG_MODE
-			cout<<endl<<"Number of zombies at "<<i<<" --> "<<el[i].num_zombies;
+				cout<<endl<<"Number of zombies at "<<i<<" --> "<<el[i].num_zombies;
 #endif
-		}
-		sort(zombies.begin(),zombies.end());
-		reverse(zombies.begin(),zombies.end());
-		cout<<endl;
-		for(int i=0; i<5; i++) {
-			cout<<zombies[i]<<"\t";
+			}
+			sort(zombies.begin(),zombies.end());
+			reverse(zombies.begin(),zombies.end());
+			cout<<endl;
+			for(int i=0; i<5; i++) {
+				cout<<zombies[i]<<"\t";
+			}
 		}
 		cout<<endl;
 		delete[] el;
+
 	}//while test
   /*********OUTPUT END************************/
 	
