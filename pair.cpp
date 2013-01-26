@@ -22,30 +22,32 @@ int main() {
   set<int> k_map;
 
   for(int i=n-1;i>=0;i--) { //outer for start
-    if(i_map.find(arr[i]) == i_map.end())
+    if(i_map.find(arr[i]) == i_map.end()) 
       i_map.insert(arr[i]);
     else
       continue;
-    k_map.erase(k_map.begin(),k_map.end());
     j_map.erase(j_map.begin(),j_map.end());
     for(int j=i-1; j>=0; j--) {//middle for start
       if( arr[j]<arr[i] ) {
-  if( j_map.find(arr[j]) == j_map.end() )
+	if( j_map.find(arr[j]) == j_map.end() )
 	  j_map.insert(arr[j]);
-      }
-      else 
-	continue;
-      for(int k=j-1;k>=0; k--) {
-	if(k_map.find(arr[k])==k_map.end()) {
-	  k_map.insert(arr[k]);
-	}
-	else 
+	else
 	  continue;
+      }
+        else 
+	  continue;
+      k_map.erase(k_map.begin(),k_map.end());
+      for(int k=j-1;k>=0; k--) {
+	if(arr[k]<arr[j]) {
+	  if(k_map.find(arr[k])==k_map.end()) 
+	    k_map.insert(arr[k]);
+	  else 
+	    continue;
 	count++;
+	}
       }//inner for end
     }// middle for end
   }// outer for end
-
 
   cout<<count;
 }// end of main
