@@ -4,7 +4,7 @@
 
 using namespace std;
 
-#define DEBUG_MODE
+//#define DEBUG_MODE
 
 int main() 
 {
@@ -45,11 +45,10 @@ int main()
       else if(xy.second>yd)
 	continue;
       else {
-	if(xy.second+(xy.first-x-d)+y<=0)
+	if( (xy.second-y)*(-d)-(xy.first-x-d)*d >=0 )
 	  count++;
-      }//end of last else of ifelse ladder
+	}//end of last else of ifelse ladder
     }//end of for loop
     cout<<count<<endl;
   }//end of queries while loop
-
 }//end of main
