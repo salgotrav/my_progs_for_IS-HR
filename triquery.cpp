@@ -1,6 +1,7 @@
 #include<iostream>
 #include<utility>
 #include<vector>
+#include<cstdio>
 
 using namespace std;
 
@@ -9,13 +10,15 @@ using namespace std;
 int main() 
 {
   int num_points, queries;
-  cin>>num_points>>queries;
+  //cin>>num_points>>queries;
+  scanf("%d%d",&num_points,&queries);
 
   pair<int, int> xy; //coordinates of point
   vector< pair<int,int> > array_points;
 
   for (int i=0; i<num_points; i++) {
-    cin>>xy.first>>xy.second;
+    //cin>>xy.first>>xy.second;
+    scanf("%d%d",&xy.first,&xy.second);
     array_points.push_back(xy);
   }//end of for loop 
 
@@ -29,7 +32,8 @@ int main()
   int x,y,d, xd,yd, count; //xd is x+d
   
   while(queries--) {
-    cin>>x>>y>>d;
+    //cin>>x>>y>>d;
+    scanf("%d%d%d",&x,&y,&d);
     xd=x+d;
     yd=y+d;
     count=0;
@@ -49,6 +53,7 @@ int main()
 	  count++;
 	}//end of last else of ifelse ladder
     }//end of for loop
-    cout<<count<<endl;
+    //cout<<count<<endl;
+    printf("%d\n",count);
   }//end of queries while loop
 }//end of main
